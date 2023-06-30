@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8dek2daudlpp"]
+
+[ext_resource type="Texture2D" uid="uid://d3b8ma602gk7a" path="res://Images/github-mark-white-98x96.png" id="1_2m4sp"]
+[ext_resource type="Theme" uid="uid://dg7vj4bbmdsrx" path="res://Themes/Links.tres" id="2_f2w6q"]
+
+[node name="Source" type="HBoxContainer"]
+offset_right = 91.0
+offset_bottom = 22.0
+size_flags_horizontal = 4
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_2m4sp")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="SourceLink" type="LinkButton" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+theme = ExtResource("2_f2w6q")
+text = "Source Code"
+underline = 1
+uri = "https://github.com/daviskyLV/hoi4modmaker"

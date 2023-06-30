@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://da4os2ef6fhw4"]
+
+[ext_resource type="Theme" uid="uid://ha3ao41tsjw0" path="res://Themes/RegularText.tres" id="1_dysle"]
+
+[node name="Version" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("1_dysle")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 15
+text = "Version 0.1"
+vertical_alignment = 1
