@@ -13,3 +13,9 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# Krita autosaves
+*.kra
+
+# Random files
+*.png~
