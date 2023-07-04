@@ -4,3 +4,9 @@
 # Denote all files that are truly binary and should not be modified.
 *.png binary
 *.jpg binary
+*.so binary
+*.o binary
+*.dll binary
+
+# dont modify addons folders
+addons/** binary
