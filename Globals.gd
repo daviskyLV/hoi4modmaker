@@ -1,19 +1,34 @@
 extends Node
 
-var gamePath: DirAccess = DirAccess.open(OS.get_data_dir()) # by default as home dir
-var gameModPath: DirAccess = DirAccess.open(OS.get_data_dir())
+var gamePath: DirAccess
+var gameModPath: DirAccess
 
 # Define settings values upon program launch
 func _ready():
 	var platform := OS.get_name()
 	
+	# Setting up default directories
+	if platform.contains("Windows") || platform.contains("UWP"):
+		var homeDir := DirAccess.open(OS.get_system_dir(OS.SYSTEM_DIR_DESKTOP))
+		homeDir.change_dir("../") # user directory
+		gamePath = DirAccess.open(homeDir.get_current_dir())
+		gameModPath = DirAccess.open(homeDir.get_current_dir())
+	elif platform.contains("macOS") || platform.contains("Linux") || platform.contains("BSD"):
+		var homeDir := DirAccess.open("~") # by default as home dir
+		if homeDir != null:
+			gamePath = DirAccess.open(homeDir.get_current_dir())
+			gameModPath = DirAccess.open(homeDir.get_current_dir())
+		else:
+			gamePath = DirAccess.open(OS.get_data_dir())
+			gameModPath = DirAccess.open(OS.get_data_dir())
+	
 	# Finding default gameModPath
-	if platform.contains("Linux"):
-		if gameModPath.dir_exists(".local/share/Paradox Interactive/Hearts of Iron IV"):
-			gameModPath.change_dir(".local/share/Paradox Interactive/Hearts of Iron IV")
-	elif platform.contains("Windows") || platform.contains("UWP") || platform.contains("macOS"):
-		if gameModPath.dir_exists("Documents/Paradox Interactive/Hearts of Iron IV"):
-			gameModPath.change_dir("Documents/Paradox Interactive/Hearts of Iron IV")
+	if platform.contains("Windows") || platform.contains("UWP") || platform.contains("macOS"):
+		if gameModPath.dir_exists("Documents/Paradox Interactive/Hearts of Iron IV/mod"):
+			gameModPath.change_dir("Documents/Paradox Interactive/Hearts of Iron IV/mod")
+	elif platform.contains("Linux"):
+		if gameModPath.dir_exists(".local/share/Paradox Interactive/Hearts of Iron IV/mod"):
+			gameModPath.change_dir(".local/share/Paradox Interactive/Hearts of Iron IV/mod")
 		
 	
 	# Finding game path
