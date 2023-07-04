@@ -1,4 +1,6 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://flphspqgwnsl"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://flphspqgwnsl"]
+
+[ext_resource type="FontFile" uid="uid://chbl0bnwilgnv" path="res://OpenSans-SemiBold.ttf" id="1_ig13r"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5xcgp"]
 
@@ -43,6 +45,7 @@ TabContainer/colors/font_selected_color = Color(0.95, 0.95, 0.95, 1)
 TabContainer/colors/font_unselected_color = Color(1, 1, 1, 1)
 TabContainer/constants/side_margin = 20
 TabContainer/font_sizes/font_size = 17
+TabContainer/fonts/font = ExtResource("1_ig13r")
 TabContainer/styles/panel = SubResource("StyleBoxEmpty_5xcgp")
 TabContainer/styles/tab_disabled = SubResource("StyleBoxFlat_16wjj")
 TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_bqmmn")

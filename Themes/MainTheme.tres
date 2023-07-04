@@ -1,4 +1,6 @@
-[gd_resource type="Theme" load_steps=21 format=3 uid="uid://du5x4qirw20ts"]
+[gd_resource type="Theme" load_steps=22 format=3 uid="uid://du5x4qirw20ts"]
+
+[ext_resource type="FontFile" uid="uid://chbl0bnwilgnv" path="res://OpenSans-SemiBold.ttf" id="1_067v6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dqbu"]
 content_margin_left = 4.0
@@ -45,7 +47,7 @@ content_margin_right = 4.0
 content_margin_bottom = 4.0
 bg_color = Color(0.262745, 0.4, 0.470588, 1)
 border_width_bottom = 3
-border_color = Color(0.2079, 0.690195, 0.99, 1)
+border_color = Color(0.207843, 0.690196, 0.988235, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
@@ -195,6 +197,7 @@ Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
 Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 Button/colors/font_pressed_color = Color(1, 1, 1, 1)
 Button/font_sizes/font_size = 17
+Button/fonts/font = ExtResource("1_067v6")
 Button/styles/disabled = SubResource("StyleBoxFlat_8dqbu")
 Button/styles/hover = SubResource("StyleBoxFlat_djbd3")
 Button/styles/normal = SubResource("StyleBoxFlat_h2hyh")
@@ -205,6 +208,7 @@ CheckBox/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
 CheckBox/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
 CheckBox/colors/font_hover_pressed_color = Color(0.301961, 0.74902, 0.992157, 1)
 CheckBox/colors/font_pressed_color = Color(0.301961, 0.74902, 0.992157, 1)
+CheckBox/fonts/font = ExtResource("1_067v6")
 CheckBox/styles/disabled = SubResource("StyleBoxEmpty_xfpw3")
 CheckBox/styles/focus = SubResource("StyleBoxEmpty_c0sgc")
 CheckBox/styles/hover = SubResource("StyleBoxFlat_2kgoy")
@@ -212,22 +216,31 @@ CheckBox/styles/hover_pressed = SubResource("StyleBoxFlat_vwd8u")
 CheckBox/styles/normal = SubResource("StyleBoxEmpty_xm7h7")
 CheckBox/styles/pressed = SubResource("StyleBoxEmpty_5r8hr")
 Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 17
+Label/fonts/font = ExtResource("1_067v6")
 LineEdit/colors/font_color = Color(0.875, 0.875, 0.875, 1)
 LineEdit/colors/font_placeholder_color = Color(0.541176, 0.541176, 0.541176, 1)
 LineEdit/colors/font_uneditable_color = Color(0.372549, 0.372549, 0.372549, 1)
 LineEdit/colors/selection_color = Color(0.541176, 0.541176, 0.541176, 1)
 LineEdit/constants/caret_width = 1
 LineEdit/font_sizes/font_size = 17
+LineEdit/fonts/font = ExtResource("1_067v6")
 LineEdit/styles/focus = SubResource("StyleBoxFlat_s4r8n")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_5auey")
 LineEdit/styles/read_only = SubResource("StyleBoxFlat_qwcvp")
+LinkButton/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+LinkButton/colors/font_hover_color = Color(0.4, 0.77, 1, 1)
+LinkButton/colors/font_pressed_color = Color(0.207843, 0.690196, 0.988235, 1)
+LinkButton/font_sizes/font_size = 15
+LinkButton/fonts/font = ExtResource("1_067v6")
 OptionButton/colors/font_color = Color(0.875, 0.875, 0.875, 1)
 OptionButton/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
 OptionButton/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
 OptionButton/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 OptionButton/colors/font_pressed_color = Color(1, 1, 1, 1)
 OptionButton/font_sizes/font_size = 17
+OptionButton/fonts/font = ExtResource("1_067v6")
 OptionButton/styles/disabled = SubResource("StyleBoxFlat_5q5si")
 OptionButton/styles/focus = SubResource("StyleBoxFlat_sclxj")
 OptionButton/styles/hover = SubResource("StyleBoxFlat_vshes")
