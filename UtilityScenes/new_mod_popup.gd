@@ -13,18 +13,32 @@ extends Node
 
 @onready var modPath := DirAccess.open(Globals.gameDataPath.get_current_dir())
 
+var prevModPathInput = "mod/"
+
 # Checks if mod can be created
 func validityCheck():
-	if modFolder.text.is_empty():
-		createButton.disabled = true
-		return
 	if supportedVersion.text.is_empty():
 		createButton.disabled = true
 		return
 	if modTitle.text.is_empty():
 		createButton.disabled = true
 		return
+		
 	createButton.disabled = false
+
+# Validating and setting the thumbnail file
+func validateThumbnail():
+	if !thumbnailPath.text.is_empty():
+		if !FileAccess.file_exists(thumbnailPath.text):
+			createButton.disabled = true
+			thumbnailImage.texture = null
+			return
+		
+		var image := Image.load_from_file(thumbnailPath.text)
+		thumbnailImage.texture = ImageTexture.create_from_image(image)
+	
+	validityCheck()
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,7 +46,7 @@ func _ready():
 	modFolder.text = Globals.modSubpath
 	supportedVersion.text = Globals.gameVersion
 	selectImgFile.root_subfolder = OS.get_system_dir(OS.SYSTEM_DIR_PICTURES)
-	selectFolder.root_subfolder = Globals.gameDataPath.get_current_dir()
+	selectFolder.root_subfolder = modPath.get_current_dir()
 
 
 
@@ -40,36 +54,83 @@ func _on_mod_title_text_changed(new_text):
 	validityCheck()
 
 
-func _on_mod_folder_text_changed(new_text):
-	validityCheck()
-
-
 func _on_supported_version_text_changed(new_text):
 	validityCheck()
 
 
+# Main bottom buttons
 func _on_cancel_pressed():
 	queue_free()
 
+func _on_create_pressed():
+	var sanitizedName: String
+	if modFolder.text.length() < 5:
+		# No mod folder name inputted, creating from mod name
+		sanitizedName = modTitle.text.to_snake_case()
+	else:
+		sanitizedName = modFolder.text.substr(4)
+	
+	var regex = RegEx.new()
+	regex.compile("\\W+")
+	sanitizedName = regex.sub(sanitizedName,"", true)
+	regex.compile("\\_+")
+	sanitizedName = regex.sub(sanitizedName,"_", true)
+	if sanitizedName.is_empty():
+		sanitizedName = "newMod"
+	
+	modPath.make_dir(sanitizedName)
+	modPath.change_dir(sanitizedName)
+	
+	var descriptorContent: String = str(
+		'version="1.0"\n',
+		"tags={}\n",
+		'name="'+modTitle.text+'"\n',
+		'supported_version="'+supportedVersion.text+'"'
+	)
+	var descFile = FileAccess.open(modPath.get_current_dir()+"/descriptor.mod",FileAccess.WRITE)
+	print(modPath.get_current_dir()+"/descriptor.mod")
+	descFile.store_string(descriptorContent)
+	descFile.close()
+	
+	queue_free()
 
+
+# Mod thumbnail stuff
 func _on_thumbnail_reset_pressed():
 	thumbnailImage.texture = null
 	thumbnailPath.text = ""
 
-
 func _on_thumbnail_select_pressed():
 	selectImgFile.show()
-	pass # Replace with function body.
 
 func _on_select_image_file_file_selected(path):
 	thumbnailPath.text = path
-	pass # Replace with function body.
+	validateThumbnail()
+
+func _on_thumbnail_path_text_changed(new_text):
+	validateThumbnail()
 
 
+# Mod folder stuff
 func _on_mod_folder_button_pressed():
 	selectFolder.show()
-	pass # Replace with function body.
 
 func _on_select_folder_dir_selected(dir):
 	modFolder.text = dir
-	pass # Replace with function body.
+
+func _on_mod_folder_text_changed(new_text):
+	if modFolder.text.is_empty():
+		modFolder.text = prevModPathInput
+		return
+	else:
+		if modFolder.text.length() < 4:
+			modFolder.text = prevModPathInput
+			return
+		
+		var cut = modFolder.text.substr(0, 4)
+		if cut != "mod/":
+			modFolder.text = prevModPathInput
+			return
+	
+	prevModPathInput = modFolder.text
+
