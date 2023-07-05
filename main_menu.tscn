@@ -114,15 +114,15 @@ texture = ExtResource("6_u3y7y")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Sort" type="VBoxContainer" parent="Margins/Tabs/Modlist/Sidebar/VBox"]
+[node name="SortVBox" type="VBoxContainer" parent="Margins/Tabs/Modlist/Sidebar/VBox"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Title" type="Label" parent="Margins/Tabs/Modlist/Sidebar/VBox/Sort"]
+[node name="Title" type="Label" parent="Margins/Tabs/Modlist/Sidebar/VBox/SortVBox"]
 layout_mode = 2
 text = "Sort by:"
 
-[node name="Filter" type="OptionButton" parent="Margins/Tabs/Modlist/Sidebar/VBox/Sort"]
+[node name="Sort" type="OptionButton" parent="Margins/Tabs/Modlist/Sidebar/VBox/SortVBox"]
 layout_mode = 2
 focus_mode = 0
 text_overrun_behavior = 1
@@ -253,7 +253,8 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 
-[node name="VBox" type="VBoxContainer" parent="Margins/Tabs/Modlist/Mods/List"]
+[node name="ModlistVBox" type="VBoxContainer" parent="Margins/Tabs/Modlist/Mods/List"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
