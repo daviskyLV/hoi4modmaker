@@ -1,0 +1,361 @@
+[gd_scene load_steps=11 format=3 uid="uid://dd246jjxkcjhe"]
+
+[ext_resource type="Theme" uid="uid://fsgn5igimmyb" path="res://Themes/NewModPopup.tres" id="1_ki1yh"]
+[ext_resource type="Script" path="res://UtilityScenes/new_mod_popup.gd" id="2_apcd1"]
+[ext_resource type="Texture2D" uid="uid://dscxindwfgqd7" path="res://Images/folder-64x64.png" id="3_f2u3u"]
+[ext_resource type="Texture2D" uid="uid://cytfexv251q5f" path="res://Images/reload-64x64.png" id="4_ns3vg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4p5e"]
+bg_color = Color(0.129412, 0.129412, 0.129412, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.541176, 0.541176, 0.541176, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r6q3b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dt5je"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qsa6c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b3qqw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tqkyn"]
+
+[node name="NewModPopup" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -213.5
+offset_top = -298.0
+offset_right = 213.5
+offset_bottom = 298.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("1_ki1yh")
+script = ExtResource("2_apcd1")
+
+[node name="Elements" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="PopupTitle" type="Label" parent="Elements"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 20
+text = "Create New Mod"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleContainer" type="VBoxContainer" parent="Elements"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Elements/TitleContainer"]
+layout_mode = 2
+text = "Mod title:"
+vertical_alignment = 1
+
+[node name="ModTitle" type="LineEdit" parent="Elements/TitleContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Sample mod title"
+
+[node name="ModFolderContainer" type="VBoxContainer" parent="Elements"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Elements/ModFolderContainer"]
+layout_mode = 2
+text = "Mod folder:"
+vertical_alignment = 1
+
+[node name="ModFolderContainer" type="HBoxContainer" parent="Elements/ModFolderContainer"]
+layout_mode = 2
+
+[node name="ModFolder" type="LineEdit" parent="Elements/ModFolderContainer/ModFolderContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "The folder where the mod will be created in"
+placeholder_text = "Folder location"
+
+[node name="ModFolderButton" type="TextureButton" parent="Elements/ModFolderContainer/ModFolderContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("3_f2u3u")
+texture_pressed = ExtResource("3_f2u3u")
+texture_hover = ExtResource("3_f2u3u")
+texture_focused = ExtResource("3_f2u3u")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="SupportedVerContainer" type="VBoxContainer" parent="Elements"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Elements/SupportedVerContainer"]
+layout_mode = 2
+text = "Supported version:"
+vertical_alignment = 1
+
+[node name="SupportedVersion" type="LineEdit" parent="Elements/SupportedVerContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Example: 1.12.14"
+placeholder_text = "Supported game version"
+
+[node name="ThumbnailContainer" type="VBoxContainer" parent="Elements"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Elements/ThumbnailContainer"]
+layout_mode = 2
+text = "Thumbnail:"
+vertical_alignment = 1
+
+[node name="HBox" type="HBoxContainer" parent="Elements/ThumbnailContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ThumbnailContainer" type="AspectRatioContainer" parent="Elements/ThumbnailContainer/HBox"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+stretch_mode = 1
+
+[node name="Thumbnail" type="Panel" parent="Elements/ThumbnailContainer/HBox/ThumbnailContainer"]
+clip_children = 1
+clip_contents = true
+layout_mode = 2
+tooltip_text = "Mod thumbnail"
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_d4p5e")
+
+[node name="ThumbnailSelect" type="Button" parent="Elements/ThumbnailContainer/HBox/ThumbnailContainer/Thumbnail"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_r6q3b")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dt5je")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_qsa6c")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_b3qqw")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tqkyn")
+
+[node name="BGColor" type="ColorRect" parent="Elements/ThumbnailContainer/HBox/ThumbnailContainer/Thumbnail"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.129412, 0.129412, 0.129412, 1)
+
+[node name="ThumbnailImage" type="TextureRect" parent="Elements/ThumbnailContainer/HBox/ThumbnailContainer/Thumbnail"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 4
+
+[node name="VBox" type="VBoxContainer" parent="Elements/ThumbnailContainer/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 7
+alignment = 1
+
+[node name="ThumbnailPath" type="LineEdit" parent="Elements/ThumbnailContainer/HBox/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Leave empty for no image"
+placeholder_text = "Thumbnail file path"
+clear_button_enabled = true
+
+[node name="HBox" type="HBoxContainer" parent="Elements/ThumbnailContainer/HBox/VBox"]
+layout_mode = 2
+
+[node name="ThumbnailReset" type="TextureButton" parent="Elements/ThumbnailContainer/HBox/VBox/HBox"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture_normal = ExtResource("4_ns3vg")
+texture_pressed = ExtResource("4_ns3vg")
+texture_hover = ExtResource("4_ns3vg")
+texture_disabled = ExtResource("4_ns3vg")
+texture_focused = ExtResource("4_ns3vg")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TagsSelection" type="VBoxContainer" parent="Elements"]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="Label" type="Label" parent="Elements/TagsSelection"]
+layout_mode = 2
+text = "Mod tags (max 10):"
+
+[node name="TagsGrid" type="GridContainer" parent="Elements/TagsSelection"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 1
+columns = 2
+
+[node name="AltHist" type="CheckBox" parent="Elements/TagsSelection/TagsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Alternative History"
+
+[node name="Balance" type="CheckBox" parent="Elements/TagsSelection/TagsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Balance"
+
+[node name="Events" type="CheckBox" parent="Elements/TagsSelection/TagsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Events"
+
+[node name="Fixes" type="CheckBox" parent="Elements/TagsSelection/TagsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Fixes"
+
+[node name="Gameplay" type="CheckBox" parent="Elements/TagsSelection/TagsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Gameplay"
+
+[node name="Graphics" type="CheckBox" parent="Elements/TagsSelection/TagsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Graphics"
+
+[node name="Historical" type="CheckBox" parent="Elements/TagsSelection/TagsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Historical"
+
+[node name="Ideologies" type="CheckBox" parent="Elements/TagsSelection/TagsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Ideologies"
+
+[node name="Map" type="CheckBox" parent="Elements/TagsSelection/TagsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Map"
+
+[node name="Military" type="CheckBox" parent="Elements/TagsSelection/TagsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Military"
+
+[node name="Focuses" type="CheckBox" parent="Elements/TagsSelection/TagsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Focuses"
+
+[node name="Sound" type="CheckBox" parent="Elements/TagsSelection/TagsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Sound"
+
+[node name="Technologies" type="CheckBox" parent="Elements/TagsSelection/TagsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Technologies"
+
+[node name="Translation" type="CheckBox" parent="Elements/TagsSelection/TagsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Translation"
+
+[node name="Utilities" type="CheckBox" parent="Elements/TagsSelection/TagsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Utilities"
+
+[node name="BottomButtons" type="MarginContainer" parent="Elements"]
+layout_mode = 2
+theme_override_constants/margin_top = 15
+
+[node name="HBox" type="HBoxContainer" parent="Elements/BottomButtons"]
+layout_mode = 2
+alignment = 1
+
+[node name="CreateContainer" type="CenterContainer" parent="Elements/BottomButtons/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Create" type="Button" parent="Elements/BottomButtons/HBox/CreateContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(125, 32)
+layout_mode = 2
+focus_mode = 0
+disabled = true
+text = "Create"
+
+[node name="CloseContainer" type="CenterContainer" parent="Elements/BottomButtons/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Cancel" type="Button" parent="Elements/BottomButtons/HBox/CloseContainer"]
+custom_minimum_size = Vector2(125, 32)
+layout_mode = 2
+focus_mode = 0
+text = "Cancel"
+
+[node name="SelectImageFile" type="NativeFileDialog" parent="."]
+title = "Open a File"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.png ; *.png")
+
+[node name="SelectFolder" type="NativeFileDialog" parent="."]
+title = "Open a Directory"
+file_mode = 2
+access = 2
+filters = PackedStringArray("*.png ; *.png")
+
+[connection signal="text_changed" from="Elements/TitleContainer/ModTitle" to="." method="_on_mod_title_text_changed"]
+[connection signal="text_changed" from="Elements/ModFolderContainer/ModFolderContainer/ModFolder" to="." method="_on_mod_folder_text_changed"]
+[connection signal="pressed" from="Elements/ModFolderContainer/ModFolderContainer/ModFolderButton" to="." method="_on_mod_folder_button_pressed"]
+[connection signal="text_changed" from="Elements/SupportedVerContainer/SupportedVersion" to="." method="_on_supported_version_text_changed"]
+[connection signal="pressed" from="Elements/ThumbnailContainer/HBox/ThumbnailContainer/Thumbnail/ThumbnailSelect" to="." method="_on_thumbnail_select_pressed"]
+[connection signal="pressed" from="Elements/ThumbnailContainer/HBox/VBox/HBox/ThumbnailReset" to="." method="_on_thumbnail_reset_pressed"]
+[connection signal="pressed" from="Elements/BottomButtons/HBox/CloseContainer/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="file_selected" from="SelectImageFile" to="." method="_on_select_image_file_file_selected"]
+[connection signal="dir_selected" from="SelectFolder" to="." method="_on_select_folder_dir_selected"]
